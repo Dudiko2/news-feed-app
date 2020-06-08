@@ -2,12 +2,14 @@ require("dotenv").config();
 require("./db/db");
 const express = require("express");
 const users = require("./routes/users");
+const news = require("./routes/news");
 
 const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use("/users", users);
+app.use("/news", news);
 
 app.get("*", (req, res) => {
 	res.send("Hey");

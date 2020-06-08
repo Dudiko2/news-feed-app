@@ -7,11 +7,9 @@ const newsAxios = axios.create({
 });
 
 const news = {
-	getHeadlines(query = null) {
+	getHeadlines(query = { country: "us" }) {
 		let qString;
-		if (query) {
-			qString = "?" + querystring.stringify(query);
-		}
+		if (query) qString = "?" + querystring.stringify(query);
 
 		return newsAxios.get("/top-headlines" + qString);
 	},
