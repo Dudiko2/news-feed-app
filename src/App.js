@@ -2,11 +2,7 @@ import React from "react";
 import "./App.css";
 
 function App() {
-	return (
-		<div className="App">
-			<h1>News-App</h1>
-		</div>
-	);
+	return <div className="App">News App</div>;
 }
 
 export default App;
