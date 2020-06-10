@@ -29,6 +29,13 @@ const userSchema = new Schema({
 			},
 		},
 	],
+	langs: [
+		{
+			type: String,
+			lowercase: true,
+		},
+	],
+	sources: [{ type: String, lowercase: true }],
 });
 
 userSchema.methods.toJSON = function () {
