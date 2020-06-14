@@ -2,23 +2,21 @@ import React from "react";
 
 const Message = ({ txt }) => {
 	const layoutStyle = {
-		position: "absolute",
-		height: "100vh",
-		width: "100%",
-		top: "0",
 		display: "flex",
 		justifyContent: "center",
-		alignItems: "center",
+		position: "absolute",
+		bottom: "6em",
+		margin: "0 auto",
+		width: "100%",
 	};
 	const bgStyle = {
-		position: "relative",
 		backgroundColor: "var(--dom)",
 		color: "var(--antidom)",
 		padding: "1em 2em",
 		borderRadius: ".6em",
 	};
 
-	return txt.length ? (
+	return txt && txt.length ? (
 		<div style={layoutStyle}>
 			<div style={bgStyle}>{txt}</div>
 		</div>

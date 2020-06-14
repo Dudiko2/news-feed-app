@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const SignIn = ({ setAuth }) => {
+const SignIn = ({ setAuth, showMsg }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -35,8 +35,9 @@ const SignIn = ({ setAuth }) => {
 				const token = r.data.token;
 				localStorage.setItem("jwt", token);
 				setAuth(true);
+				showMsg("Success!", 3000);
 			})
-			.catch((e) => console.log(e.message));
+			.catch(() => showMsg("Unable to login", 3000));
 	};
 
 	return (
