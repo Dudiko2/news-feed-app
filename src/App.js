@@ -5,7 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import SignIn from "./pages/SignIn/SignIn";
 import Navbar from "./components/Navbar/Navbar";
-import Message from "./components/Message/Message";
+import Main from "./pages/Main/Main";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
@@ -28,6 +28,7 @@ function App() {
 						auth={isAuth}
 						component={() => <SignIn setAuth={setIsAuth} />}
 					/>
+					<PublicRoute path="/" exact auth={isAuth} component={Main} />
 				</Switch>
 			</div>
 		</Router>

@@ -6,6 +6,7 @@ const Article = ({
 	date = "date",
 	desc = "lorem",
 	source = "src",
+	url = "/",
 }) => {
 	const bgStyles = {
 		padding: "2em",
@@ -37,7 +38,7 @@ const Article = ({
 				<p>{date}</p>
 			</div>
 			<p style={{ margin: "0 0 .6em 0" }}>{desc}</p>
-			<a href="/">{source}</a>
+			<a href={url}>{source}</a>
 		</div>
 	);
 };
