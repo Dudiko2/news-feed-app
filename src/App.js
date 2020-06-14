@@ -3,8 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
-
+import SignIn from "./pages/SignIn";
 import Navbar from "./components/Navbar/Navbar";
+
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
 
@@ -24,7 +25,7 @@ function App() {
 						exact
 						restricted={true}
 						auth={isAuth}
-						component={() => <div>Sign in</div>}
+						component={() => <SignIn />}
 					/>
 				</Switch>
 			</div>

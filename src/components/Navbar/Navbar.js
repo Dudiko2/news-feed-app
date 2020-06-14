@@ -18,11 +18,6 @@ const Navbar = () => {
 		marginLeft: "1.6em",
 	};
 	const searchStyle = {
-		backgroundColor: "#CFCFCF",
-		borderStyle: "none",
-		height: "2em",
-		paddingLeft: "1em",
-		borderRadius: "0.6em",
 		marginLeft: "1.6em",
 	};
 
