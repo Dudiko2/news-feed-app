@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import SignIn from "./pages/SignIn/SignIn";
 import Navbar from "./components/Navbar/Navbar";
+import Message from "./components/Message/Message";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
