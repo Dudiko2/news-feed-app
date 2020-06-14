@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
 	const navStyle = {
@@ -29,7 +30,7 @@ const Navbar = () => {
 		<nav style={navStyle}>
 			<h1>Feed</h1>
 			<div style={{ display: "flex", alignItems: "center" }}>
-				<a href="/">Explore</a>
+				<NavLink to="/">Explore</NavLink>
 				<input style={searchStyle} type="text" placeholder="Search..."></input>
 				<div style={userStyle}></div>
 			</div>
