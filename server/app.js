@@ -8,7 +8,11 @@ const news = require("./routes/news");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.use(cors());
+const corsOptions = {
+	origin: "http://localhost:3000",
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/users", users);
 app.use("/news", news);
