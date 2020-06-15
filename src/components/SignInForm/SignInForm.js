@@ -8,24 +8,22 @@ const Form = ({ setAuth, showMsg }) => {
 	const [isSubmitting, setSubmitting] = useState(false);
 
 	const bgStyle = {
-		backgroundColor: "#fff",
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
-		alignItems: "center",
+		maxWidth: "500px",
 		padding: "2em",
-		maxWidth: "300px",
-		margin: "auto",
 	};
 
 	const formStyle = {
 		display: "flex",
 		flexDirection: "column",
-		alignItems: "center",
 	};
 
 	const inputStyle = {
 		marginTop: "1em",
+		height: "5em",
+		fontSize: "1em",
 	};
 
 	const handleSubmit = (e) => {
@@ -59,7 +57,7 @@ const Form = ({ setAuth, showMsg }) => {
 
 	return (
 		<div style={bgStyle}>
-			<h2>Log In</h2>
+			<h2 style={{ marginBottom: "1em" }}>Log In</h2>
 			<form style={formStyle} onSubmit={handleSubmit}>
 				<input
 					style={inputStyle}

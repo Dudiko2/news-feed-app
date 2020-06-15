@@ -1,0 +1,9 @@
+.Layout {
+	display: grid;
+	grid: auto / 10% auto 20%;
+	margin-top: 2em;
+}
+
+.Layout > * {
+	margin: 0 0.5em;
+}
