@@ -64,6 +64,7 @@ input[type="submit"] {
 	height: 3em;
 	padding: 0;
 	cursor: pointer;
+	width: 100%;
 }
 
 .fadeOutTrans {
