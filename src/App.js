@@ -10,12 +10,6 @@ import Main from "./pages/Main/Main";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
-	// const [msg, setMsg] = useState("");
-
-	// const showMsg = (m, milisecs) => {
-	// 	setMsg(m);
-	// 	setTimeout(() => setMsg(""), milisecs);
-	// };
 
 	return (
 		<Router>
@@ -39,7 +33,6 @@ function App() {
 					/>
 					<PublicRoute path="/" exact component={Main} />
 				</Switch>
-				{/* <Message txt={msg} /> */}
 			</div>
 		</Router>
 	);
