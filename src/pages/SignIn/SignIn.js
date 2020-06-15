@@ -1,66 +1,25 @@
 import React, { useState } from "react";
-import axios from "axios";
+import Message from "../../components/Message/Message";
+import Form from "../../components/SignInForm/SignInForm";
 
-const SignIn = ({ setAuth, showMsg }) => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+const SignIn = ({ setAuth }) => {
+	const [msg, setMsg] = useState("");
+	const [moreStyle, setMoreStyle] = useState({ opacity: 1 });
 
-	const bgStyle = {
-		backgroundColor: "#fff",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "center",
-		padding: "2em",
-		maxWidth: "300px",
-		margin: "auto",
-	};
-
-	const formStyle = {
-		display: "flex",
-		flexDirection: "column",
-	};
-
-	const inputStyle = {
-		marginTop: "1em",
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (!email.length || !password.length) return;
-
-		axios
-			.post("http://localhost:8000/users/login", { email, password })
-			.then((r) => {
-				const token = r.data.token;
-				localStorage.setItem("jwt", token);
-				setAuth(true);
-				showMsg("Success!", 3000);
-			})
-			.catch(() => showMsg("Unable to login", 3000));
+	const showMsg = (m, milisecs) => {
+		setMsg(m);
+		setTimeout(() => setMoreStyle({ opacity: 0 }), 0);
+		setTimeout(() => {
+			setMsg("");
+			setMoreStyle({ opacity: 1 });
+		}, milisecs);
 	};
 
 	return (
-		<div style={bgStyle}>
-			<h2>Log In</h2>
-			<form style={formStyle} onSubmit={handleSubmit}>
-				<input
-					style={inputStyle}
-					type="text"
-					placeholder="email"
-					onChange={(e) => setEmail(e.target.value)}
-					value={email}
-				></input>
-				<input
-					style={inputStyle}
-					type="password"
-					placeholder="password"
-					onChange={(e) => setPassword(e.target.value)}
-					value={password}
-				></input>
-				<input style={inputStyle} type="submit" value="Send"></input>
-			</form>
-		</div>
+		<>
+			<Form showMsg={showMsg} setAuth={setAuth} />
+			<Message className="fadeOutTrans" txt={msg} moreStyle={moreStyle} />
+		</>
 	);
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Message = ({ txt }) => {
+const Message = ({ txt, moreStyle = {}, className = "" }) => {
 	const layoutStyle = {
 		display: "flex",
 		justifyContent: "center",
@@ -18,7 +18,9 @@ const Message = ({ txt }) => {
 
 	return txt && txt.length ? (
 		<div style={layoutStyle}>
-			<div style={bgStyle}>{txt}</div>
+			<div className={className} style={{ ...bgStyle, ...moreStyle }}>
+				{txt}
+			</div>
 		</div>
 	) : null;
 };
