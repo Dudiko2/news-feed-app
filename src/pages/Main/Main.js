@@ -12,17 +12,25 @@ const Main = () => {
 		});
 	}, []);
 
-	return articles.map((a) => (
-		<Article
-			author={a.author}
-			desc={a.description}
-			title={a.title}
-			source={a.source.name}
-			url={a.url}
-			date={new Date(a.publishedAt).toDateString()}
-			key={a.url}
-		/>
-	));
+	return (
+		<>
+			<div></div>
+			<div>
+				{articles.map((a) => (
+					<Article
+						author={a.author}
+						desc={a.description}
+						title={a.title}
+						source={a.source.name}
+						url={a.url}
+						date={new Date(a.publishedAt).toDateString()}
+						key={a.url}
+					/>
+				))}
+			</div>
+			<div></div>
+		</>
+	);
 };
 
 export default Main;
