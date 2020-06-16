@@ -17,16 +17,12 @@ const Navbar = () => {
 		borderRadius: "100%",
 		marginLeft: "1.6em",
 	};
-	const searchStyle = {
-		marginLeft: "1.6em",
-	};
 
 	return (
 		<nav style={navStyle}>
 			<h1>Feed</h1>
 			<div style={{ display: "flex", alignItems: "center" }}>
 				<NavLink to="/">Explore</NavLink>
-				<input style={searchStyle} type="text" placeholder="Search..."></input>
 				<div style={userStyle}></div>
 			</div>
 		</nav>

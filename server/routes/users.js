@@ -35,20 +35,29 @@ router.post("/login", async (req, res) => {
 	}
 });
 
-router.patch("/follow", auth, async (req, res) => {
-	const source = req.body.source;
-	const sources = req.user.sources;
-	if (!sources.find((s) => s === source)) {
-		sources.push(source);
-		try {
-			await req.user.save();
-			return res.send({ user: req.user });
-		} catch (e) {
-			return res.status(400).send({ error: e.message });
-		}
-	}
+router.patch("/", auth, async (req, res) => {
+	const updates = Object.keys(req.body);
+	const allowedUpdates = ["sources", "langs", "password"];
+	const isValidUpdate = updates.every((u) => allowedUpdates.includes(u));
 
-	res.send({ user: req.user });
+	if (!isValidUpdate) return res.status(400).send({ error: "Invalid updates" });
+
+	try {
+		updates.forEach((u) => (req.user[u] = req.body[u]));
+		await req.user.save();
+		res.send(req.user);
+	} catch (e) {
+		res.status(400).send({ error: e.message });
+	}
+});
+
+router.delete("/", auth, async (req, res) => {
+	try {
+		await User.deleteOne({ _id: req.user._id });
+		res.send(req.user);
+	} catch (e) {
+		res.status(500).send({ error: e.message });
+	}
 });
 
 module.exports = router;
