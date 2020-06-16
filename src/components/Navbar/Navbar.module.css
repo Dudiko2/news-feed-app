@@ -1,10 +1,19 @@
-.userMenu {
+.navStyle {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 	display: flex;
+	width: 100%;
+	background-color: var(--antidom);
+	padding: 1em 2em;
 	align-items: center;
+	justify-content: center;
+	border-bottom: 2px solid var(--dom);
 }
 
-.userMenu > * {
-	margin-left: 1.6em;
+.userMenu {
+	display: none;
 }
 
 .Signup {
@@ -17,4 +26,20 @@
 
 a .Signup {
 	color: var(--antidom);
+}
+
+@media only screen and (min-width: 768px) {
+	.navStyle {
+		justify-content: space-between;
+		padding: 1em 4em;
+	}
+
+	.userMenu {
+		display: flex;
+		align-items: center;
+	}
+
+	.userMenu > * {
+		margin-left: 1.6em;
+	}
 }

@@ -3,17 +3,6 @@ import { NavLink } from "react-router-dom";
 import Styles from "./Navbar.module.css";
 
 const Navbar = ({ auth }) => {
-	const navStyle = {
-		position: "sticky",
-		top: "0",
-		zIndex: "1000",
-		display: "flex",
-		backgroundColor: "#fff",
-		padding: "1em 4em",
-		alignItems: "center",
-		justifyContent: "space-between",
-		borderBottom: "2px solid var(--dom)",
-	};
 	const userStyle = {
 		backgroundColor: "#CFCFCF",
 		display: "inline-block",
@@ -37,7 +26,7 @@ const Navbar = ({ auth }) => {
 	);
 
 	return (
-		<nav style={navStyle}>
+		<nav className={Styles.navStyle}>
 			<NavLink to="/">
 				<h1>Feed</h1>
 			</NavLink>

@@ -1,0 +1,34 @@
+.bgStyle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1em 2em;
+}
+
+.bgStyle h2 {
+	margin-bottom: 1em;
+}
+
+.formStyle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.formStyle input {
+	margin-top: 1em;
+	height: 4em;
+	width: 100%;
+}
+
+.formStyle div {
+	margin: 1em auto;
+}
+
+@media only screen and (min-width: 768px) {
+	.formStyle input {
+		max-width: 300px;
+	}
+}

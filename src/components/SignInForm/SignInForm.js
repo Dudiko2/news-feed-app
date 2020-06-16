@@ -1,30 +1,12 @@
 import React, { useState } from "react";
 import api from "../../axios";
 import PulseLoader from "react-spinners/PulseLoader";
+import Styles from "./SignInForm.module.css";
 
 const Form = ({ setAuth, showMsg }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isSubmitting, setSubmitting] = useState(false);
-
-	const bgStyle = {
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		padding: "2em",
-	};
-
-	const formStyle = {
-		display: "flex",
-		flexDirection: "column",
-	};
-
-	const inputStyle = {
-		marginTop: "1em",
-		height: "4em",
-		width: "20em",
-		fontSize: "1em",
-	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -52,22 +34,20 @@ const Form = ({ setAuth, showMsg }) => {
 			margin="0px"
 		/>
 	) : (
-		<input style={inputStyle} type="submit" value="Send"></input>
+		<input type="submit" value="Send"></input>
 	);
 
 	return (
-		<div style={bgStyle}>
-			<h2 style={{ marginBottom: "1em" }}>Log In</h2>
-			<form style={formStyle} onSubmit={handleSubmit}>
+		<div className={Styles.bgStyle}>
+			<h2>Log In</h2>
+			<form className={Styles.formStyle} onSubmit={handleSubmit}>
 				<input
-					style={inputStyle}
 					type="text"
 					placeholder="email"
 					onChange={(e) => setEmail(e.target.value)}
 					value={email}
 				></input>
 				<input
-					style={inputStyle}
 					type="password"
 					placeholder="password"
 					onChange={(e) => setPassword(e.target.value)}
