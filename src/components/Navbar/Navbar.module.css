@@ -1,0 +1,20 @@
+.userMenu {
+	display: flex;
+	align-items: center;
+}
+
+.userMenu > * {
+	margin-left: 1.6em;
+}
+
+.Signup {
+	display: flex;
+	align-items: center;
+	background-color: var(--dom);
+	padding: 0.5em 1em;
+	border-radius: 0.6em;
+}
+
+a .Signup {
+	color: var(--antidom);
+}

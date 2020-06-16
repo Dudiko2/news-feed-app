@@ -11,7 +11,7 @@ const Article = ({
 	const bgStyles = {
 		padding: "2em",
 		backgroundColor: "#fff",
-		margin: "1em",
+		marginBottom: "1em",
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",

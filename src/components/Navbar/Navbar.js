@@ -1,13 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ auth }) => {
 	const navStyle = {
 		display: "flex",
 		backgroundColor: "#fff",
 		padding: "1em 4em",
 		alignItems: "center",
 		justifyContent: "space-between",
+		borderBottom: "2px solid var(--dom)",
 	};
 	const userStyle = {
 		backgroundColor: "#CFCFCF",
@@ -15,16 +17,28 @@ const Navbar = () => {
 		height: "2em",
 		width: "2em",
 		borderRadius: "100%",
-		marginLeft: "1.6em",
 	};
+
+	const userMenu = auth ? (
+		<>
+			<NavLink to="/">Explore</NavLink>
+			<div style={userStyle}></div>
+		</>
+	) : (
+		<>
+			<NavLink to="/signin">Log In</NavLink>
+			<NavLink to="signup">
+				<div className={Styles.Signup}>Sign Up</div>
+			</NavLink>
+		</>
+	);
 
 	return (
 		<nav style={navStyle}>
-			<h1>Feed</h1>
-			<div style={{ display: "flex", alignItems: "center" }}>
-				<NavLink to="/">Explore</NavLink>
-				<div style={userStyle}></div>
-			</div>
+			<NavLink to="/">
+				<h1>Feed</h1>
+			</NavLink>
+			<div className={Styles.userMenu}>{userMenu}</div>
 		</nav>
 	);
 };

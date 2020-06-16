@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../../axios";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const Form = ({ setAuth, showMsg }) => {
@@ -11,7 +11,6 @@ const Form = ({ setAuth, showMsg }) => {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
-		// maxWidth: "500px",
 		padding: "2em",
 	};
 
@@ -32,7 +31,7 @@ const Form = ({ setAuth, showMsg }) => {
 		if (!email.length || !password.length) return;
 
 		setSubmitting(true);
-		axios
+		api
 			.post("http://localhost:8000/users/login", { email, password })
 			.then((r) => {
 				const token = r.data.token;

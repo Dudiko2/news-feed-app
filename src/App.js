@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import SignIn from "./pages/SignIn/SignIn";
+import SignUp from "./pages/SignUp/SignUp";
 import Navbar from "./components/Navbar/Navbar";
 import Main from "./pages/Main/Main";
 import Layout from "./components/Layout/Layout";
@@ -14,7 +15,7 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<Navbar />
+				<Navbar auth={isAuth} />
 				<Layout>
 					<Switch>
 						<PrivateRoute
@@ -29,6 +30,13 @@ function App() {
 							restricted={true}
 							auth={isAuth}
 							component={() => <SignIn setAuth={setIsAuth} />}
+						/>
+						<PublicRoute
+							path="/signup"
+							exact
+							restricted={true}
+							auth={isAuth}
+							component={() => <SignUp setAuth={setIsAuth} />}
 						/>
 						<PublicRoute path="/" exact component={Main} />
 					</Switch>

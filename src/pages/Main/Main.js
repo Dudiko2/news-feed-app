@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Article from "../../components/Article/Article";
-import axios from "axios";
+import api from "../../axios";
 
 const Main = () => {
 	const [articles, setArticles] = useState([]);
 
 	useEffect(() => {
-		axios.get("http://localhost:8000/news/top").then((r) => {
-			console.log(r.data.articles);
+		api.get("/news/top").then((r) => {
 			setArticles(r.data.articles);
 		});
 	}, []);
 
 	return (
 		<>
-			<div></div>
-			<div>
+			<div style={{ gridColumn: "2 / 3" }}>
 				{articles.map((a) => (
 					<Article
 						author={a.author}
@@ -28,7 +26,17 @@ const Main = () => {
 					/>
 				))}
 			</div>
-			<div></div>
+			<div>
+				<div
+					style={{
+						backgroundColor: "var(--antidom)",
+						display: "flex",
+						padding: "2em",
+					}}
+				>
+					hello
+				</div>
+			</div>
 		</>
 	);
 };
