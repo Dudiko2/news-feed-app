@@ -4,6 +4,9 @@ import Styles from "./Navbar.module.css";
 
 const Navbar = ({ auth }) => {
 	const navStyle = {
+		position: "sticky",
+		top: "0",
+		zIndex: "1000",
 		display: "flex",
 		backgroundColor: "#fff",
 		padding: "1em 4em",

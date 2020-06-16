@@ -25,7 +25,7 @@ const Article = ({
 	};
 
 	const authorDateStyles = {
-		fontSize: "0.65em",
+		fontSize: "0.8em",
 		margin: "0 0 .6em 0",
 	};
 

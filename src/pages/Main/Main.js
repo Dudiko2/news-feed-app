@@ -29,9 +29,11 @@ const Main = () => {
 			<div>
 				<div
 					style={{
-						backgroundColor: "var(--antidom)",
+						position: "sticky",
+						top: "6em",
 						display: "flex",
 						padding: "2em",
+						backgroundColor: "var(--antidom)",
 					}}
 				>
 					hello
