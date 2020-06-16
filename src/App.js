@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
@@ -8,9 +8,24 @@ import SignUp from "./pages/SignUp/SignUp";
 import Navbar from "./components/Navbar/Navbar";
 import Main from "./pages/Main/Main";
 import Layout from "./components/Layout/Layout";
+import api from "./axios";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
+
+	useEffect(() => {
+		const token = localStorage.getItem("jwt");
+		api
+			.get("/users/me", {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+			.then(() => setIsAuth(true))
+			.catch(() => {
+				localStorage.removeItem("jwt");
+			});
+	}, []);
 
 	return (
 		<Router>
