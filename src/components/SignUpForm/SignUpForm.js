@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import api from "../../axios";
-import PulseLoader from "react-spinners/PulseLoader";
 
-const Form = ({ setAuth, showMsg }) => {
+const Form = ({ setAuth }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [isSubmitting, setSubmitting] = useState(false);
+	const [confirmPassword, setConfirmPassword] = useState("");
 
 	const bgStyle = {
 		display: "flex",
@@ -28,36 +27,23 @@ const Form = ({ setAuth, showMsg }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (!email.length || !password.length) return;
 
-		setSubmitting(true);
+		if (password !== confirmPassword) return;
+		if (!email.length || !password.length || !confirmPassword.length) return;
+
 		api
-			.post("/users/login", { email, password })
+			.post("/users/signup", { email, password })
 			.then((r) => {
 				const token = r.data.token;
 				localStorage.setItem("jwt", token);
 				setAuth(true);
 			})
-			.catch(() => {
-				setSubmitting(false);
-				showMsg("Unable to login", 3000);
-			});
+			.catch(() => console.log("fail"));
 	};
-
-	const button = isSubmitting ? (
-		<PulseLoader
-			css="margin-top: 1em;"
-			color="var(--dom)"
-			size=".5em"
-			margin="0px"
-		/>
-	) : (
-		<input style={inputStyle} type="submit" value="Send"></input>
-	);
 
 	return (
 		<div style={bgStyle}>
-			<h2 style={{ marginBottom: "1em" }}>Log In</h2>
+			<h2 style={{ marginBottom: "1em" }}>Sign Up</h2>
 			<form style={formStyle} onSubmit={handleSubmit}>
 				<input
 					style={inputStyle}
@@ -73,7 +59,14 @@ const Form = ({ setAuth, showMsg }) => {
 					onChange={(e) => setPassword(e.target.value)}
 					value={password}
 				></input>
-				{button}
+				<input
+					style={inputStyle}
+					type="password"
+					placeholder="confirm password"
+					onChange={(e) => setConfirmPassword(e.target.value)}
+					value={confirmPassword}
+				></input>
+				<input style={inputStyle} type="submit" value="Send"></input>
 			</form>
 		</div>
 	);
