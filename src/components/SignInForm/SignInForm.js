@@ -11,7 +11,7 @@ const Form = ({ setAuth, showMsg }) => {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
-		maxWidth: "500px",
+		// maxWidth: "500px",
 		padding: "2em",
 	};
 
@@ -22,7 +22,8 @@ const Form = ({ setAuth, showMsg }) => {
 
 	const inputStyle = {
 		marginTop: "1em",
-		height: "5em",
+		height: "4em",
+		width: "20em",
 		fontSize: "1em",
 	};
 

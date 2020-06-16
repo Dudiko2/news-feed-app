@@ -17,7 +17,6 @@ const Article = ({
 		justifyContent: "center",
 		alignItems: "flex-start",
 		color: "#707070",
-		maxWidth: "700px",
 	};
 
 	const titleStyles = {
