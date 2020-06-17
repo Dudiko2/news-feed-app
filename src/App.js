@@ -15,16 +15,22 @@ function App() {
 
 	useEffect(() => {
 		const token = localStorage.getItem("jwt");
-		api
-			.get("/users/me", {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-			.then(() => setIsAuth(true))
-			.catch(() => {
-				localStorage.removeItem("jwt");
-			});
+		if (token) {
+			api
+				.get("/users/me", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+				.then((r) => {
+					localStorage.setItem("user", JSON.stringify(r.data));
+					setIsAuth(true);
+				})
+				.catch(() => {
+					localStorage.removeItem("jwt");
+					localStorage.removeItem("user");
+				});
+		}
 	}, []);
 
 	return (
