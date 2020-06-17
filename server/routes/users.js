@@ -35,6 +35,28 @@ router.post("/login", async (req, res) => {
 	}
 });
 
+router.post("/logout", auth, async (req, res) => {
+	try {
+		req.user.tokens = req.user.tokens.filter((t) => t.token !== req.token);
+		await req.user.save();
+
+		res.send();
+	} catch (e) {
+		res.status(500).send({ error: e.message });
+	}
+});
+
+router.post("/logoutall", auth, async (req, res) => {
+	try {
+		req.user.tokens = [];
+		await req.user.save();
+
+		res.send();
+	} catch (e) {
+		res.status(500).send();
+	}
+});
+
 router.patch("/", auth, async (req, res) => {
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ["sources", "langs", "password"];
