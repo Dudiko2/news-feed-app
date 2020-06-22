@@ -30,7 +30,7 @@ const Main = () => {
 				<div
 					style={{
 						position: "sticky",
-						top: "6em",
+						top: "5em",
 						display: "flex",
 						padding: "2em",
 						backgroundColor: "var(--antidom)",

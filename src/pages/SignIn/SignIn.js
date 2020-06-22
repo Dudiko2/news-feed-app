@@ -17,7 +17,7 @@ const SignIn = ({ setAuth }) => {
 
 	return (
 		<>
-			<div style={{ gridColumn: "2 / 3" }}>
+			<div style={{ gridColumn: "1 / -1" }}>
 				<Form showMsg={showMsg} setAuth={setAuth} />
 			</div>
 			<Message className="fadeOutTrans" txt={msg} moreStyle={moreStyle} />

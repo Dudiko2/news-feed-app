@@ -4,7 +4,7 @@ import Form from "../../components/SignUpForm/SignUpForm";
 const SignUp = ({ setAuth }) => {
 	return (
 		<>
-			<div style={{ gridColumn: "2 / 3" }}>
+			<div style={{ gridColumn: "1 / -1" }}>
 				<Form setAuth={setAuth} />
 			</div>
 		</>
