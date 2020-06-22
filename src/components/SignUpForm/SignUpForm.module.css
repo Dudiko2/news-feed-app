@@ -1,0 +1,42 @@
+.bgStyle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1em 2em;
+}
+
+.bgStyle h2 {
+	margin-bottom: 1em;
+}
+
+.formStyle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.formStyle input {
+	margin-top: 1em;
+	height: 4em;
+	width: 100%;
+}
+
+.formStyle div {
+	margin: 1em auto;
+}
+
+@media only screen and (min-width: 768px) {
+	.bgStyle {
+		align-items: flex-start;
+	}
+	.formStyle {
+		align-items: flex-start;
+	}
+	.formStyle input {
+		font-size: 1em;
+		max-height: 4em;
+		max-width: 20em;
+	}
+}
