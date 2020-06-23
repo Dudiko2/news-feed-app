@@ -16,7 +16,7 @@ const Main = () => {
 
 	return (
 		<>
-			<div style={{ gridColumn: "2 / 3" }}>
+			<main style={{ gridColumn: "2 / 3" }}>
 				{isLoading ? (
 					<PulseLoader
 						css="display: flex; justify-content: center; align-items: center; height: 100%; margin-top: 1em;"
@@ -25,7 +25,7 @@ const Main = () => {
 				) : (
 					articles.map((a) => <Article article={a} key={a.url} />)
 				)}
-			</div>
+			</main>
 			<div>
 				<div
 					style={{
