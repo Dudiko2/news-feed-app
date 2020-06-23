@@ -7,13 +7,14 @@ const Message = ({ txt, moreStyle = {}, className = "" }) => {
 		position: "absolute",
 		bottom: "6em",
 		margin: "0 auto",
-		width: "100%",
+		width: "90%",
 	};
 	const bgStyle = {
 		backgroundColor: "var(--dom)",
 		color: "var(--antidom)",
 		padding: "1em 2em",
 		borderRadius: ".6em",
+		display: "inline-block",
 	};
 
 	return txt && txt.length ? (

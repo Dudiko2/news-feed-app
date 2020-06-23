@@ -10,7 +10,8 @@ const Form = ({ setAuth, showMsg }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (!email.length || !password.length) return;
+		if (!email.length || !password.length)
+			return showMsg("Please fill all the fields", 3000);
 
 		setSubmitting(true);
 		api

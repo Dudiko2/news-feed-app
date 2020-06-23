@@ -16,8 +16,9 @@ const Form = ({ setAuth }) => {
 		api
 			.post("/users/signup", { email, password })
 			.then((r) => {
-				const token = r.data.token;
+				const { token, ...user } = r.data;
 				localStorage.setItem("jwt", token);
+				localStorage.setItem("user", JSON.stringify(user.user));
 				setAuth(true);
 			})
 			.catch(() => console.log("fail"));

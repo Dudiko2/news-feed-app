@@ -46,11 +46,6 @@ a {
 	color: var(--dom);
 	text-decoration: none;
 	font-weight: bold;
-	opacity: 0.8;
-}
-
-a:hover {
-	opacity: 1;
 }
 
 input {
@@ -79,4 +74,14 @@ input[type="submit"] {
 	-ms-transition: opacity 3s ease-in-out;
 	-o-transition: opacity 3s ease-in-out;
 	transition: opacity 3s ease-in-out;
+}
+
+@media only screen and (min-width: 768px) {
+	a {
+		opacity: 0.5;
+		transition: opacity 0.3s;
+	}
+	a:hover {
+		opacity: 1;
+	}
 }
