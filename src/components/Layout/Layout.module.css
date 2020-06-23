@@ -7,7 +7,7 @@
 @media only screen and (min-width: 768px) {
 	.Layout {
 		display: grid;
-		grid: auto / 10% auto 20%;
+		grid: auto / auto 60% 25%;
 	}
 
 	.Layout > * {
