@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
+//COMPONENTS
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import Navbar from "./components/Navbar/Navbar";
+import Layout from "./components/Layout/Layout";
+// PAGES
+import Main from "./pages/Main/Main";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
-import Navbar from "./components/Navbar/Navbar";
-import Main from "./pages/Main/Main";
-import Layout from "./components/Layout/Layout";
+import Account from "./pages/Account/Account";
+
 import api from "./axios";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
+	const [userData, setUserData] = useState(localStorage.getItem("user"));
 
 	useEffect(() => {
 		const token = localStorage.getItem("jwt");
@@ -24,6 +29,7 @@ function App() {
 				})
 				.then((r) => {
 					localStorage.setItem("user", JSON.stringify(r.data));
+					setUserData(r.data);
 					setIsAuth(true);
 				})
 				.catch(() => {
@@ -39,11 +45,12 @@ function App() {
 				<Navbar auth={isAuth} />
 				<Layout>
 					<Switch>
+						<PublicRoute path="/" exact component={Main} />
 						<PrivateRoute
-							path="/user"
+							path="/account"
 							exact
 							auth={isAuth}
-							component={() => <div>private</div>}
+							component={() => <Account user={userData} />}
 						/>
 						<PublicRoute
 							path="/signin"
@@ -59,7 +66,6 @@ function App() {
 							auth={isAuth}
 							component={() => <SignUp setAuth={setIsAuth} />}
 						/>
-						<PublicRoute path="/" exact component={Main} />
 					</Switch>
 				</Layout>
 			</div>

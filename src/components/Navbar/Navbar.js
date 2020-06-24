@@ -14,7 +14,9 @@ const Navbar = ({ auth }) => {
 	const userMenu = auth ? (
 		<>
 			<NavLink to="/">Explore</NavLink>
-			<div style={userStyle}></div>
+			<NavLink to="account">
+				<div style={userStyle}></div>
+			</NavLink>
 		</>
 	) : (
 		<>
