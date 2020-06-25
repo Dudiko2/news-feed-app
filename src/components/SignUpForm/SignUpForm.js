@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 import Styles from "./SignUpForm.module.css";
 import api from "../../axios";
 
-const Form = ({ setAuth }) => {
+const Form = () => {
+	const { setIsAuth } = useContext(AuthContext);
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,7 +22,7 @@ const Form = ({ setAuth }) => {
 				const { token, ...user } = r.data;
 				localStorage.setItem("jwt", token);
 				localStorage.setItem("user", JSON.stringify(user.user));
-				setAuth(true);
+				setIsAuth(true);
 			})
 			.catch(() => console.log("fail"));
 	};

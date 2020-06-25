@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 import api from "../../axios";
 import PulseLoader from "react-spinners/PulseLoader";
 import Styles from "./SignInForm.module.css";
 
-const Form = ({ setAuth, showMsg }) => {
+const Form = ({ showMsg }) => {
+	const { setIsAuth } = useContext(AuthContext);
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isSubmitting, setSubmitting] = useState(false);
@@ -20,7 +23,7 @@ const Form = ({ setAuth, showMsg }) => {
 				const { token, ...user } = r.data;
 				localStorage.setItem("jwt", token);
 				localStorage.setItem("user", JSON.stringify(user.user));
-				setAuth(true);
+				setIsAuth(true);
 			})
 			.catch(() => {
 				setSubmitting(false);

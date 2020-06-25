@@ -12,6 +12,8 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Account from "./pages/Account/Account";
 
+import { AuthProvider } from "./context/AuthContext";
+
 import api from "./axios";
 
 function App() {
@@ -41,34 +43,33 @@ function App() {
 
 	return (
 		<Router>
-			<div className="App">
-				<Navbar auth={isAuth} />
-				<Layout>
-					<Switch>
-						<PublicRoute path="/" exact component={Main} />
-						<PrivateRoute
-							path="/account"
-							exact
-							auth={isAuth}
-							component={() => <Account user={userData} />}
-						/>
-						<PublicRoute
-							path="/signin"
-							exact
-							restricted={true}
-							auth={isAuth}
-							component={() => <SignIn setAuth={setIsAuth} />}
-						/>
-						<PublicRoute
-							path="/signup"
-							exact
-							restricted={true}
-							auth={isAuth}
-							component={() => <SignUp setAuth={setIsAuth} />}
-						/>
-					</Switch>
-				</Layout>
-			</div>
+			<AuthProvider value={{ isAuth, userData, setIsAuth, setUserData }}>
+				<div className="App">
+					<Navbar />
+					<Layout>
+						<Switch>
+							<PublicRoute path="/" exact component={Main} />
+							<PrivateRoute
+								path="/account"
+								exact
+								component={() => <Account user={userData} />}
+							/>
+							<PublicRoute
+								path="/signin"
+								exact
+								restricted={true}
+								component={() => <SignIn />}
+							/>
+							<PublicRoute
+								path="/signup"
+								exact
+								restricted={true}
+								component={() => <SignUp />}
+							/>
+						</Switch>
+					</Layout>
+				</div>
+			</AuthProvider>
 		</Router>
 	);
 }

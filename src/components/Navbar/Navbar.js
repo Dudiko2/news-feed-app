@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 import Styles from "./Navbar.module.css";
 
-const Navbar = ({ auth }) => {
+const Navbar = () => {
+	const context = useContext(AuthContext);
+
 	const userStyle = {
 		backgroundColor: "#CFCFCF",
 		display: "inline-block",
@@ -11,7 +14,7 @@ const Navbar = ({ auth }) => {
 		borderRadius: "100%",
 	};
 
-	const userMenu = auth ? (
+	const userMenu = context.isAuth ? (
 		<>
 			<NavLink to="/">Explore</NavLink>
 			<NavLink to="account">

@@ -1,11 +1,11 @@
 import React from "react";
 import Form from "../../components/SignUpForm/SignUpForm";
 
-const SignUp = ({ setAuth }) => {
+const SignUp = () => {
 	return (
 		<>
 			<div style={{ gridColumn: "1 / -1" }}>
-				<Form setAuth={setAuth} />
+				<Form />
 			</div>
 		</>
 	);

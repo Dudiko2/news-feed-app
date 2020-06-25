@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import { Route, Redirect } from "react-router-dom";
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
+	const { isAuth } = useContext(AuthContext);
+
 	return (
 		<Route
 			{...rest}
 			render={(props) =>
-				auth ? <Component {...props} /> : <Redirect to="/" />
+				isAuth ? <Component {...props} /> : <Redirect to="/" />
 			}
 		/>
 	);

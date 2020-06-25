@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Message from "../../components/Message/Message";
 import Form from "../../components/SignInForm/SignInForm";
 
-const SignIn = ({ setAuth }) => {
+const SignIn = () => {
 	const [msg, setMsg] = useState("");
 	const [moreStyle, setMoreStyle] = useState({ opacity: 1 });
 
@@ -18,7 +18,7 @@ const SignIn = ({ setAuth }) => {
 	return (
 		<>
 			<div style={{ gridColumn: "1 / -1" }}>
-				<Form showMsg={showMsg} setAuth={setAuth} />
+				<Form showMsg={showMsg} />
 			</div>
 			<Message className="fadeOutTrans" txt={msg} moreStyle={moreStyle} />
 		</>
