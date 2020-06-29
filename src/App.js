@@ -18,7 +18,7 @@ import api from "./axios";
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);
-	const [userData, setUserData] = useState(localStorage.getItem("user"));
+	const [userData, setUserData] = useState(null);
 
 	useEffect(() => {
 		const token = localStorage.getItem("jwt");
@@ -30,13 +30,11 @@ function App() {
 					},
 				})
 				.then((r) => {
-					localStorage.setItem("user", JSON.stringify(r.data));
 					setUserData(r.data);
 					setIsAuth(true);
 				})
 				.catch(() => {
 					localStorage.removeItem("jwt");
-					localStorage.removeItem("user");
 				});
 		}
 	}, []);
@@ -52,7 +50,7 @@ function App() {
 							<PrivateRoute
 								path="/account"
 								exact
-								component={() => <Account user={userData} />}
+								component={() => <Account />}
 							/>
 							<PublicRoute
 								path="/signin"

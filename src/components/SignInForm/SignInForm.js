@@ -5,7 +5,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import Styles from "./SignInForm.module.css";
 
 const Form = ({ showMsg }) => {
-	const { setIsAuth } = useContext(AuthContext);
+	const { setIsAuth, setUserData } = useContext(AuthContext);
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -22,7 +22,8 @@ const Form = ({ showMsg }) => {
 			.then((r) => {
 				const { token, ...user } = r.data;
 				localStorage.setItem("jwt", token);
-				localStorage.setItem("user", JSON.stringify(user.user));
+
+				setUserData(user.user);
 				setIsAuth(true);
 			})
 			.catch(() => {
