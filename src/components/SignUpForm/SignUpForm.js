@@ -4,7 +4,7 @@ import Styles from "./SignUpForm.module.css";
 import api from "../../axios";
 
 const Form = () => {
-	const { setIsAuth } = useContext(AuthContext);
+	const { setIsAuth, setUserData } = useContext(AuthContext);
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -21,7 +21,8 @@ const Form = () => {
 			.then((r) => {
 				const { token, ...user } = r.data;
 				localStorage.setItem("jwt", token);
-				localStorage.setItem("user", JSON.stringify(user.user));
+
+				setUserData(user.user);
 				setIsAuth(true);
 			})
 			.catch(() => console.log("fail"));
