@@ -19,36 +19,21 @@ const Main = () => {
 	}, [getTopNews]);
 
 	return (
-		<>
-			<main style={{ gridColumn: "2 / 3" }}>
-				{articles.map((a, index) => (
-					<Article article={a} key={a.url + index} />
-				))}
-				<PulseLoader
-					css={`
-						display: ${isLoading ? "flex" : "none"};
-						justify-content: center;
-						align-items: center;
-						height: 100%;
-						margin-top: 1em;
-					`}
-					color="var(--dom)"
-				/>
-			</main>
-			<div>
-				<div
-					style={{
-						position: "sticky",
-						top: "5em",
-						display: "flex",
-						padding: "2em",
-						backgroundColor: "var(--antidom)",
-					}}
-				>
-					hello
-				</div>
-			</div>
-		</>
+		<main style={{ gridColumn: "2 / 3" }}>
+			{articles.map((a, index) => (
+				<Article article={a} key={a.url + index} />
+			))}
+			<PulseLoader
+				css={`
+					display: ${isLoading ? "flex" : "none"};
+					justify-content: center;
+					align-items: center;
+					height: 100%;
+					margin-top: 1em;
+				`}
+				color="var(--dom)"
+			/>
+		</main>
 	);
 };
 

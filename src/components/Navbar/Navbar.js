@@ -1,25 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import MenuIcon from "../../icons/MenuIcon";
 import Styles from "./Navbar.module.css";
 
 const Navbar = () => {
 	const context = useContext(AuthContext);
-
-	const userStyle = {
-		backgroundColor: "#CFCFCF",
-		display: "inline-block",
-		height: "2em",
-		width: "2em",
-		borderRadius: "100%",
-	};
+	const [isOpen, setIsOpen] = useState(false);
 
 	const userMenu = context.isAuth ? (
 		<>
 			<NavLink to="/">Explore</NavLink>
-			<NavLink to="account">
-				<div style={userStyle}></div>
-			</NavLink>
+			<NavLink to="account">Account</NavLink>
 		</>
 	) : (
 		<>
@@ -30,13 +22,27 @@ const Navbar = () => {
 		</>
 	);
 
+	const menuCls = [Styles.userMenu, isOpen ? Styles.openMenu : ""];
+
 	return (
-		<nav className={Styles.navStyle}>
-			<NavLink to="/">
-				<h1>Feed</h1>
-			</NavLink>
-			<div className={Styles.userMenu}>{userMenu}</div>
-		</nav>
+		<>
+			<nav className={Styles.navStyle}>
+				<NavLink style={{ opacity: 1 }} to="/">
+					<h1>Feed</h1>
+				</NavLink>
+				<MenuIcon
+					cls={Styles.Icon}
+					open={isOpen}
+					onClick={() => setIsOpen(!isOpen)}
+				/>
+				{/* desktop menu */}
+				<div className={Styles.Desktop}>{userMenu}</div>
+			</nav>
+			{/* mobile menu */}
+			<div onClick={() => setIsOpen(false)} className={menuCls.join(" ")}>
+				{userMenu}
+			</div>
+		</>
 	);
 };
 

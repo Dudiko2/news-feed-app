@@ -2,23 +2,44 @@
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
-	z-index: 1000;
+	z-index: 500;
 	display: flex;
 	width: 100%;
 	background-color: var(--antidom);
 	padding: 1em 2em;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	border-bottom: 2px solid var(--dom);
 }
 
 .userMenu {
-	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	background-color: var(--antidom);
+	width: 100%;
+	transform: translateY(-100%);
+	transition: ease-out 0.3s;
+}
+
+.openMenu {
+	transform: translateY(50%);
+}
+
+.userMenu > * {
+	padding: 1em 0.5em;
+	width: 100%;
 }
 
 .Signup {
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	max-width: 6em;
 	background-color: var(--dom);
 	padding: 0.5em 1em;
 	border-radius: 0.6em;
@@ -28,18 +49,29 @@ a .Signup {
 	color: var(--antidom);
 }
 
+.Desktop {
+	display: none;
+}
+
 @media only screen and (min-width: 768px) {
 	.navStyle {
-		justify-content: space-between;
 		padding: 1em 4em;
 	}
 
 	.userMenu {
-		display: flex;
-		align-items: center;
+		display: none;
 	}
 
-	.userMenu > * {
+	.Desktop > * {
 		margin-left: 1.6em;
+	}
+
+	.Icon {
+		display: none;
+	}
+
+	.Desktop {
+		display: flex;
+		align-items: center;
 	}
 }
