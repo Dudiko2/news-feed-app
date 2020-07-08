@@ -1,0 +1,16 @@
+.Account {
+	grid-column: 2 / 3;
+}
+
+.Cont {
+	padding: 2em;
+	background-color: var(--antidom);
+}
+
+.Cont h2 {
+	font-weight: normal;
+}
+
+.Cont > * {
+	margin-bottom: 1em;
+}
