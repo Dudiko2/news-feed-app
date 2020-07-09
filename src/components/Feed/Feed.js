@@ -2,12 +2,11 @@ import React from "react";
 import Article from "../Article/Article";
 import { InView } from "react-intersection-observer";
 
-const Feed = ({ articles, getTopNews }) => {
+const Feed = ({ articles, getNews }) => {
 	return (
 		<InView
 			onChange={(inView) => {
-				console.log(inView);
-				if (articles.length && inView) getTopNews();
+				if (articles.length && inView) getNews();
 			}}
 		>
 			{({ ref }) =>

@@ -10,12 +10,21 @@ const Navbar = () => {
 
 	const userMenu = context.isAuth ? (
 		<>
-			<NavLink to="/">Explore</NavLink>
-			<NavLink to="account">Account</NavLink>
+			<NavLink exact activeClassName={Styles.ActiveLink} to="/">
+				Explore
+			</NavLink>
+			<NavLink activeClassName={Styles.ActiveLink} to="account">
+				Account
+			</NavLink>
 		</>
 	) : (
 		<>
-			<NavLink to="/signin">Log In</NavLink>
+			<NavLink exact activeClassName={Styles.ActiveLink} to="/">
+				Explore
+			</NavLink>
+			<NavLink activeClassName={Styles.ActiveLink} to="/signin">
+				Log In
+			</NavLink>
 			<NavLink to="signup">
 				<div className={Styles.Signup}>Sign Up</div>
 			</NavLink>

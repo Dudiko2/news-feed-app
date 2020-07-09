@@ -15,7 +15,10 @@ const Main = () => {
 		api
 			.get(`/news/top?page=${p}`)
 			.then((r) => {
-				setArticles((articles) => articles.concat(r.data.articles));
+				if (r.data.articles.length) {
+					setArticles((articles) => articles.concat(r.data.articles));
+					setPage((page) => page + 1);
+				}
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -31,7 +34,7 @@ const Main = () => {
 	return (
 		<main style={{ gridColumn: "2 / 3" }}>
 			{articles.length ? (
-				<Feed articles={articles} getTopNews={getTopNews} />
+				<Feed articles={articles} getNews={() => getTopNews(page)} />
 			) : null}
 			<PulseLoader
 				css={`
