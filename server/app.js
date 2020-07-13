@@ -2,6 +2,7 @@ require("dotenv").config();
 require("./db/db");
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const users = require("./routes/users");
 const news = require("./routes/news");
 
@@ -17,8 +18,14 @@ app.use(express.json());
 app.use("/users", users);
 app.use("/news", news);
 
-app.get("*", (req, res) => {
-	res.send("Hey");
-});
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("../build"));
+
+	app.get("*", (req, res) => {
+		res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+	});
+
+	console.log("prod");
+}
 
 app.listen(PORT, console.log(`Running on port ${PORT}`));
