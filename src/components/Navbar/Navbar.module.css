@@ -1,6 +1,11 @@
-.navStyle {
+.top {
 	position: -webkit-sticky;
 	position: sticky;
+	top: 0;
+}
+
+.navStyle {
+	position: relative;
 	top: 0;
 	z-index: 500;
 	display: flex;

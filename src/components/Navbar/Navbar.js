@@ -34,7 +34,7 @@ const Navbar = () => {
 	const menuCls = [Styles.userMenu, isOpen ? Styles.openMenu : ""];
 
 	return (
-		<>
+		<div className={Styles.top}>
 			<nav className={Styles.navStyle}>
 				<NavLink style={{ opacity: 1 }} to="/">
 					<h1>Feed</h1>
@@ -51,7 +51,7 @@ const Navbar = () => {
 			<div onClick={() => setIsOpen(false)} className={menuCls.join(" ")}>
 				{userMenu}
 			</div>
-		</>
+		</div>
 	);
 };
 
