@@ -19,13 +19,12 @@ app.use("/users", users);
 app.use("/news", news);
 
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static("../build"));
+	const rootDir = path.join(__dirname, "..", "build");
+	app.use(express.static(rootDir));
 
 	app.get("*", (req, res) => {
-		res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+		res.sendFile("index.html", { rootDir });
 	});
-
-	console.log("prod");
 }
 
 app.listen(PORT, console.log(`Running on port ${PORT}`));
